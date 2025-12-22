@@ -1,0 +1,10 @@
+{
+  "placeholderImages": [
+    {
+      "id": "hero",
+      "description": "Abstract visualization of data points and connections, representing AI analysis.",
+      "imageUrl": "https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxkYXRhJTIwYW5hbHlzaXN8ZW58MHx8fHwxNzYxMTEwODU5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "data analysis"
+    }
+  ]
+}
