@@ -1,5 +1,7 @@
-import { genkit } from 'genkit';import { ollama } from 'genkitx-ollama';
-export const ai = genkit({ plugins: 
-  [ ollama({ models: [ { name: 'deepseek-r1:latest', type: 'generate', }, ], 
-    
-    serverAddress: process.env.OLLAMA_SERVER || "http://127.0.0.1:11434", }) ], model: 'ollama/deepseek-r1:latest',});
+import {genkit} from 'genkit';
+import {googleAI} from '@genkit-ai/google-genai';
+
+export const ai = genkit({
+  plugins: [googleAI()],
+  model: 'googleai/gemini-2.5-flash',
+});
