@@ -13,9 +13,9 @@ import {ai} from '@/ai/genkit';
 import {z} from 'zod';
 
 const PlainLanguageAnalysisInputSchema = z.object({
-  textContent: z.string().describe('URL of the website to analyze.'),
-  structure: z.string().describe('URL of the website to analyze.'),
-  imageMetadata: z.string().describe('URL of the website to analyze.'),
+  textContent: z.string().describe('The visible text content of the website.'),
+  structure: z.string().describe('JSON string containing the heading structure, lists, and paragraphs.'),
+  imageMetadata: z.string().describe('JSON string containing image alt text and metadata.'),
 });
 export type PlainLanguageAnalysisInput = z.infer<typeof PlainLanguageAnalysisInputSchema>;
 
@@ -138,7 +138,7 @@ const prompt = ai.definePrompt({
   - 'listAndBulletIssues': Detect long paragraphs that would be more readable as a bulleted or numbered list.
 
   For the 'scannability' section:
-  - 'textWalls': Identify paragraphs that are significantly long (e.g., more than 150 words) and qualify as "walls of text." For each one, provide the full text of the paragraph and a concise, one-sentence summary of its content.
+  - 'textWalls': Review the 'paragraphs' list in the 'Website Structure' JSON. Identify paragraphs that are significantly long (e.g., more than 80 words) and qualify as "walls of text." For each one, provide the full text of the paragraph and a concise, one-sentence summary of its content.
   - 'paragraphLengthScore': Provide a score from 0-100 where higher scores indicate shorter, more scannable paragraphs on average. This will serve as the main 'scannability score'.
   - 'logicalFlowFeedback': Analyze the overall structure and provide feedback on how logically the content flows from one section to the next. Specifically, answer: Is the page's key message clear and easy to identify? Does the order of topics make sense for a typical reader?
   - 'headingContentMismatch': Critically evaluate if the content under each heading accurately matches the heading's topic. If a heading is misleading or the content seems unrelated, add a descriptive string to this array. For example: "The heading 'Our Services' is followed by content about company history, which is a mismatch."
@@ -171,7 +171,14 @@ const prompt = ai.definePrompt({
 
   Set the 'totalImages' field to the sum of images with and without alt text.
 
-  URL to Analyze: {{{textContent}}}
+  Website Text Content:
+  {{{textContent}}}
+
+  Website Structure (Headings, Lists, & Paragraphs):
+  {{{structure}}}
+
+  Image Metadata:
+  {{{imageMetadata}}}
 
   Your output must be a JSON object that adheres strictly to the defined schema.
   `,
