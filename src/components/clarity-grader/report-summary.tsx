@@ -33,36 +33,31 @@ export default function ReportSummary({ analysis }: { analysis: PlainLanguageAna
   return (
     <Card>
       <CardContent className="p-4">
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-5 md:grid-cols-10">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 md:grid-cols-8">
           <SummaryItem
             icon={<Ruler className="h-6 w-6" />}
             value={analysis.readabilityGradeLevel}
-            label="Grade Level"
-          />
-          <SummaryItem
-            icon={<Percent className="h-6 w-6" />}
-            value={`${analysis.aiPlagiarismPercentage}%`}
-            label="AI/Plagiarism"
+            label="Niveau de lecture"
           />
           <SummaryItem
             icon={<BookOpen className="h-6 w-6" />}
             value={analysis.totalWords}
-            label="Words"
+            label="Mots"
           />
           <SummaryItem
             icon={<BookText className="h-6 w-6" />}
             value={analysis.totalSentences}
-            label="Sentences"
+            label="Phrases"
           />
            <SummaryItem
             icon={<Scale className="h-6 w-6" />}
             value={analysis.averageSentenceLength}
-            label="Avg. Sentence"
+            label="Moy. phrase"
           />
           <SummaryItem
             icon={<Book className="h-6 w-6" />}
             value={analysis.totalParagraphs}
-            label="Paragraphs"
+            label="Paragraphes"
           />
           <SummaryItem
             icon={<ImageIcon className="h-6 w-6" />}
@@ -72,17 +67,12 @@ export default function ReportSummary({ analysis }: { analysis: PlainLanguageAna
           <SummaryItem
             icon={<Heading className="h-6 w-6" />}
             value={analysis.totalHeadings}
-            label="Headings"
-          />
-          <SummaryItem
-            icon={<List className="h-6 w-6" />}
-            value={analysis.totalLists}
-            label="Lists"
+            label="Titres"
           />
           <SummaryItem
             icon={<Clock className="h-6 w-6" />}
             value={analysis.estimatedReadingTime}
-            label="Reading Time"
+            label="Temps de lecture"
           />
         </div>
       </CardContent>
