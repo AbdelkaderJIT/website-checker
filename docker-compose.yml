@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  # Service Application Next.js
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: website-checker-app
+    ports:
+      - "9002:9002"
+    env_file:
+      - .env.local
+    environment:
+      - NODE_ENV=development
+      - PORT=9002
+    restart: unless-stopped
+
